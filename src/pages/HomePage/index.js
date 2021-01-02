@@ -4,7 +4,7 @@ import './styles.scss';
 
 const HomePage = () => {
 	return (
-		<div className='homepage'>
+		<div className='home-page'>
 			<Directory />
 		</div>
 	);
