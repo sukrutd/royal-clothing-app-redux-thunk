@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormInput from '../FormInput';
 import CustomButton from '../CustomButton';
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 class SignUp extends Component {
 	constructor(props) {
@@ -14,9 +15,22 @@ class SignUp extends Component {
 		};
 	}
 
-	handleSubmit = (event) => {
+	handleSubmit = async (event) => {
 		event.preventDefault();
-		this.setState({ email: '', password: '' });
+		const { displayName, email, password, confirmPassword } = this.state;
+
+		if (password !== confirmPassword) {
+			alert('Passwords do not match!');
+			return;
+		}
+
+		try {
+			const { user } = await auth.createUserWithEmailAndPassword(email, password);
+			await createUserProfileDocument(user, { displayName });
+			this.setState({ displayName: '', email: '', password: '', confirmPassword: '' });
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	handleChange = (event) => {
@@ -25,7 +39,7 @@ class SignUp extends Component {
 	};
 
 	render() {
-		const { displayName, email, password } = this.state;
+		const { displayName, email, password, confirmPassword } = this.state;
 
 		return (
 			<div className='sign-in'>
@@ -59,12 +73,14 @@ class SignUp extends Component {
 					<FormInput
 						type='password'
 						name='confirmPassword'
-						value={password}
+						value={confirmPassword}
 						label='Confirm Password'
 						handleChange={this.handleChange}
 						required
 					/>
-					<CustomButton type='submit'>Sign Up</CustomButton>
+					<div className='justify-center'>
+						<CustomButton type='submit'>Sign up</CustomButton>
+					</div>
 				</form>
 			</div>
 		);

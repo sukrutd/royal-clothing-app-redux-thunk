@@ -3,10 +3,14 @@
 	width: auto;
 	height: 50px;
 	line-height: 50px;
+	font-family: inherit;
 	text-transform: uppercase;
 	background-color: #222222;
 	color: #ffffff;
 	padding: 0 20px;
+	margin: 0 10px;
+	outline: none;
+	cursor: pointer;
 
 	&:hover {
 		background-color: #ffffff;

@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	padding: 20px 40px;
+	font-family: 'Montserrat', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+a {
+	text-decoration: none;
+	color: #222222;
+}
+
+/** Utility Classes */
+.justify-center {
+	display: flex;
+	justify-content: center;
+}
+.link-button {
+	background: transparent;
+	border: none;
+	font-size: inherit;
+	font-family: inherit;
+}
