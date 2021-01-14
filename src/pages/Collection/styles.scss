@@ -1,0 +1,19 @@
+.collection-page {
+	display: flex;
+	flex-direction: column;
+
+	.title {
+		margin: 20px auto;
+		text-transform: uppercase;
+	}
+
+	.items {
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	& .collection-item {
+		margin-bottom: 20px;
+	}
+}
