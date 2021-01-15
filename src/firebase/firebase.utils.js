@@ -41,4 +41,19 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	return userRef;
 };
 
+// Function to create a new firestore collection and batch write documents into that collection
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+	const collectionRef = firestore.collection(collectionKey);
+
+	// Batch write ensures atomicity & consistency in the code
+	const batch = firestore.batch();
+
+	objectsToAdd.forEach((obj) => {
+		const newDocRef = collectionRef.doc();
+		batch.set(newDocRef, obj);
+	});
+
+	return await batch.commit();
+};
+
 export default firebase;
