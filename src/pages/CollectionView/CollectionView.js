@@ -4,10 +4,10 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 import CollectionItem from '../../components/CollectionItem';
 import './styles.scss';
 
-const Collection = ({ collection }) => {
+const CollectionView = ({ collection }) => {
 	const { title, items } = collection;
 	return (
-		<div className='collection-page'>
+		<div className='collection-view'>
 			<h2 className='title'>{title}</h2>
 			<div className='items'>
 				{items.map((item) => (
@@ -22,4 +22,4 @@ const mapStateToProps = (state, ownProps) => ({
 	collection: selectCollection(ownProps.match.params.collectionId)(state)
 });
 
-export default connect(mapStateToProps)(Collection);
+export default connect(mapStateToProps)(CollectionView);

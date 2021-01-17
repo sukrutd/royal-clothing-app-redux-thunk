@@ -8,8 +8,8 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
+import CheckoutPage from './pages/CheckoutPage';
 import AuthPage from './pages/AuthPage';
-import Checkout from './pages/Checkout';
 import './App.scss';
 
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path='/' component={HomePage} />
 					<Route path='/shop' component={ShopPage} />
-					<Route exact path='/checkout' component={Checkout} />
+					<Route exact path='/checkout' component={CheckoutPage} />
 					<Route exact path='/signin' render={() => (this.props.currentUser ? <Redirect to='/' /> : <AuthPage />)} />
 				</Switch>
 			</Router>

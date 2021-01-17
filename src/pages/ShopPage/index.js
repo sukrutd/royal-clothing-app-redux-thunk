@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect';
-import { selectIsFetchingCollections, selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors';
 import { fetchCollectionsAsync } from '../../redux/shop/shop.actions';
-import CollectionOverview from '../../components/CollectionOverview';
-import WithSpinner from '../../components/HOC/WithSpinner';
-import Collection from '../Collection';
+import CollectionsOverview from '../../components/CollectionsOverview';
+import CollectionView from '../CollectionView';
 import './styles.scss';
-
-const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
-const CollectionWithSpinner = WithSpinner(Collection);
 
 class ShopPage extends Component {
 	componentDidMount() {
@@ -19,32 +13,19 @@ class ShopPage extends Component {
 	}
 
 	render() {
-		const { match, isFetchingCollections, isCollectionLoaded } = this.props;
+		const { match } = this.props;
 
 		return (
 			<div className='shop-page'>
-				<Route
-					exact
-					path={`${match.path}`}
-					render={(props) => <CollectionOverviewWithSpinner isLoading={isFetchingCollections} {...props} />}
-				/>
-				<Route
-					exact
-					path={`${match.path}/:collectionId`}
-					render={(props) => <CollectionWithSpinner isLoading={!isCollectionLoaded} {...props} />}
-				/>
+				<Route exact path={`${match.path}`} component={CollectionsOverview} />
+				<Route exact path={`${match.path}/:collectionId`} component={CollectionView} />
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = createStructuredSelector({
-	isFetchingCollections: selectIsFetchingCollections,
-	isCollectionLoaded: selectIsCollectionsLoaded
-});
-
 const mapDispatchToProps = (dispatch) => ({
 	fetchCollectionsAsync: () => dispatch(fetchCollectionsAsync())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
+export default connect(null, mapDispatchToProps)(ShopPage);

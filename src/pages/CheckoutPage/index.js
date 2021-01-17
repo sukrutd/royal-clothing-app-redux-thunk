@@ -6,7 +6,7 @@ import CheckoutItem from '../../components/CheckoutItem';
 import StripeCheckoutButton from '../../components/StripeButton';
 import './styles.scss';
 
-const Checkout = ({ cartItems, cartTotal }) => {
+const CheckoutPage = ({ cartItems, cartTotal }) => {
 	return (
 		<div className='checkout-page'>
 			<div className='checkout-header'>
@@ -34,4 +34,4 @@ const mapStateToProps = createStructuredSelector({
 	cartTotal: selectCartTotal
 });
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps)(CheckoutPage);
