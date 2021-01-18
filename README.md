@@ -39,13 +39,13 @@ The build is minified and the filenames include the hashes.
 
 ## Heroku Deployment Process
 
-### `heroku login`
+- `heroku login`
 
-### `heroku create royal-clothing-app --buildpack https://github.com/mars/create-react-app-buildpack.git`
+- `heroku create royal-clothing-app --buildpack https://github.com/mars/create-react-app-buildpack.git`
 
-This buildpack deploys a React app as a static web site. The Nginx web server provides optimum performance and security for the runtime.
+- `git push heroku master`
 
-### `git push heroku master`
+The create-react-app-buildpack deploys a React app as a static web site on Heroku. The Nginx web server provides optimum performance and security for the runtime.
 
 ### App Url
 
