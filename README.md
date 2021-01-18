@@ -4,16 +4,16 @@ The app has been bootstrapped with CRA (Create React App).
 
 ### Libraries/Dependencies
 
-1. react
-2. redux
-3. react-redux
-4. redux-thunk
-5. redux-logger
-6. redux-persist
-7. reselect
-8. react-router-dom
-9. firebase
-10. react-stripe-checkout
+- react
+- redux
+- react-redux
+- redux-thunk
+- redux-logger
+- redux-persist
+- reselect
+- react-router-dom
+- react-stripe-checkout
+- firbase
 
 ## Available Scripts
 
